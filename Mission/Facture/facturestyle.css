@@ -1,0 +1,89 @@
+body{
+    background-color: lightblue;
+    font-family: sans-serif;
+    margin: 0px;
+}
+
+
+.FACTURE{
+    color: #AEAEAE;
+}
+
+
+img{
+    width: 150px;
+    height: 150px;
+}
+
+
+
+nav{
+    background-color: #00955B;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+ 
+.left{
+    display: flex;
+
+}
+.Laboratoire{
+    padding: 0% 5%;
+}
+
+.informations{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 5%;
+
+}
+
+
+.Envoyez{
+    margin: 0px 15%;
+}
+
+table{
+    width: 98%;
+    text-align: center;
+}
+
+td{
+    border: #000000 1px solid;
+}
+
+.head{
+    color: #ffffff;
+    background-color: #00955B;
+}
+
+.affichage{
+    display: flex;
+}
+
+
+
+.price{
+    margin-left: 75%;
+}
+
+.displayPrice td{
+    border: 0px;
+    text-align: left;
+}
+
+
+tr .solde{
+    background-color: #FF6060;
+    padding: 0px 10px;
+}
+
+h3 .line{
+    border: #000000 1px solid;
+}
+
+
+tr #solde{
+    border-top: #000000 3px solid;
+}
