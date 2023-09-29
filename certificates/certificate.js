@@ -8,7 +8,8 @@ const devImages = ["Sololearn_cpp.jpg",
                   "Sololearn_sql.jpg",
                   "Udemy_CMS_Blog_PHP.jpg"];
 
-const scriptImages = ["Udemy_docker.jpg"];
+const scriptImages = ["Udemy_docker.jpg",
+                    "Udemy_linux_productivity.jpg"];
 
 const cyberImages = ["Avant_de_cliquer.png",
                     "cisco.png",
