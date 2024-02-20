@@ -18,7 +18,10 @@ const cyberImages = ["Avant_de_cliquer.png",
                     "cnil_mod2.png",
                     "cnil_mod3.png",
                     "cnil_mod4.png",
-                    "cnil_mod5.png"];
+                    "cnil_mod5.png",
+                    "econocom_security.jpg",
+                    "econocom_corruption.jpg",
+                    "econocom_RGPD.jpg"];
 
 const otherImages = ["Culture in Action.png",
                     "The Big Challenge.png",
