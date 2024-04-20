@@ -1,0 +1,52 @@
+img.me {
+
+    width: 90%;
+    height: 90%;
+    z-index: 8;
+    position: relative;
+
+}
+
+
+h1 {
+
+    color: #fff;
+    font-size: 4em;
+    text-align: left;
+    text-shadow: #000 2px 2px 20px;
+    font-weight: bold;
+
+}
+
+
+h4 {
+
+    text-align: justify;
+    color: #CCC;
+    text-shadow: #000 3px 3px 20px;
+
+
+}
+
+
+.row {
+
+    align-items: center;
+
+}
+
+.content {
+
+    
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+
+}
+
+.CV {
+
+    padding: 10px 20px;
+    margin-left: 50%;
+
+
+}
