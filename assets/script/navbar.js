@@ -61,15 +61,15 @@ let HeaderHTML = `
             </a>
             <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=YuHoujk8SUc&list=PLbuiz-jlC_VSZ5Lvek5fQzK1lMr2FeyKu&index=3" target="_blank">Youtube</a></li>
-            <li><a class="dropdown-item" href="#" target="_blank">Discord</a></li>
-            <li><a class="dropdown-item" href="#" target="_blank">Newsletter</a></li>
+            <li><a class="dropdown-item" href="https://github.com/Maxence-villet/portfolio/blob/main/TechnologyWatch/content/Discord.png?raw=true" target="_blank">Discord</a></li>
+            <li><a class="dropdown-item" href="https://github.com/Maxence-villet/portfolio/blob/main/TechnologyWatch/content/Newsletter.png?raw=true" target="_blank">Newsletter</a></li>
             <li><a class="dropdown-item" href="#" target="_blank">Udemy</a></li>
             <li><a class="dropdown-item" href="https://www.youtube.com/@a-bunch-o-rust" target="_blank">Stream/live</a></li>
 
             </ul>
             </li>`; 
         }
-
+        
         if (obj.nav[element] !== obj.nav.Technology_watch) {
             console.log(element);
             if (document.getElementById("Nav")) 
