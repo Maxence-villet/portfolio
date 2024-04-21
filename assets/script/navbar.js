@@ -6,13 +6,20 @@ const obj = {
             "path" : "Me/",
             "sub_path" : "../Me/"
         },
+
+        "Intership" : {
+            "content" : "Intership",
+            "path" : "https://www.econocom.com/en",
+            "sub_path" : "https://www.econocom.com/en" 
+        },
     
         "Project" : {
             "content" : "Project",
             "path" : "Project/", 
             "sub_path" : "../Project/"
         },
-    
+
+
         "Technology_watch" : {
             "content" : "Technology watch",
             "path" : "TechnologyWatch",
@@ -23,7 +30,7 @@ const obj = {
             "content" : "Certificate",
             "path" : "certificates/",
             "sub_path" : "../certificates/" 
-        }  
+        }
     },
 
     "Home" : {
@@ -68,8 +75,20 @@ let HeaderHTML = `
             </ul>
             </li>`; 
         }
+
+        if (obj.nav[element] === obj.nav.Intership) {
+            console.log(element);
+            if (document.getElementById("Nav")) 
+            {
+                HeaderHTML += `<a class="nav-link" href="${obj.nav[element].path}" target="_blank">${obj.nav[element].content}</a>`;
+            }
+            if (document.getElementById("SubNav"))
+            {
+                HeaderHTML += `<a class="nav-link" href="${obj.nav[element].sub_path}" target="_blank">${obj.nav[element].content}</a>`;
+            }
+        }
         
-        if (obj.nav[element] !== obj.nav.Technology_watch) {
+        if (obj.nav[element] !== obj.nav.Technology_watch && obj.nav[element] !== obj.nav.Intership) {
             console.log(element);
             if (document.getElementById("Nav")) 
             {
@@ -78,7 +97,7 @@ let HeaderHTML = `
             if (document.getElementById("SubNav"))
             {
                 HeaderHTML += `<a class="nav-link" href="${obj.nav[element].sub_path}">${obj.nav[element].content}</a>`;
-        }
+            }
         }
 
     };
