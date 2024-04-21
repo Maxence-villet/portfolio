@@ -1,4 +1,5 @@
-const devImages = ["Sololearn_cpp.jpg",
+const devImages = ["Udemy_Rust_beginner.png",
+                  "Sololearn_cpp.jpg",
                   "Sololearn_csharp.png",
                   "Sololearn_js_inter.png",
                   "Sololearn_js.png",
@@ -6,7 +7,8 @@ const devImages = ["Sololearn_cpp.jpg",
                   "Sololearn_python.png",
                   "Sololearn_sql_inter.png",
                   "Sololearn_sql.jpg",
-                  "Udemy_CMS_Blog_PHP.jpg"];
+                  "Udemy_CMS_Blog_PHP.jpg"
+                ];
 
 const scriptImages = ["Udemy_docker.jpg",
                     "Udemy_linux_productivity.jpg"];
