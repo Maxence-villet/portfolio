@@ -6,12 +6,6 @@ const obj = {
             "path" : "Me/",
             "sub_path" : "../Me/"
         },
-
-        "Intership" : {
-            "content" : "Intership",
-            "path" : "https://www.econocom.com/en",
-            "sub_path" : "https://www.econocom.com/en" 
-        },
     
         "Project" : {
             "content" : "Project",
@@ -19,13 +13,6 @@ const obj = {
             "sub_path" : "../Project/"
         },
 
-
-        "Technology_watch" : {
-            "content" : "Technology watch",
-            "path" : "TechnologyWatch",
-            "sub_path" : "../TechnologyWatch/"
-        },
-    
         "Certificate" : {
             "content" : "Certificate",
             "path" : "certificates/",
@@ -61,44 +48,16 @@ let HeaderHTML = `
       
     for(const element in obj.nav) 
     {
-        if (obj.nav[element] === obj.nav.Technology_watch) {
-            HeaderHTML += `<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Technology watch
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=YuHoujk8SUc&list=PLbuiz-jlC_VSZ5Lvek5fQzK1lMr2FeyKu&index=3" target="_blank">Youtube</a></li>
-                <li><a class="dropdown-item" href="https://github.com/Maxence-villet/portfolio/blob/main/TechnologyWatch/content/Discord.png?raw=true" target="_blank">Discord</a></li>
-                <li><a class="dropdown-item" href="https://github.com/Maxence-villet/portfolio/blob/main/TechnologyWatch/content/Newsletter.png?raw=true" target="_blank">Newsletter</a></li>
-                <li><a class="dropdown-item" href="https://github.com/Maxence-villet/portfolio/blob/main/TechnologyWatch/content/Udemy.png?raw=true" target="_blank">Udemy</a></li>
-                <li><a class="dropdown-item" href="https://www.youtube.com/@a-bunch-o-rust" target="_blank">Stream/live</a></li>
-            </ul>
-            </li>`; 
+
+        if (document.getElementById("Nav")) 
+        {
+            HeaderHTML += `<a class="nav-link" href="${obj.nav[element].path}">${obj.nav[element].content}</a>`;
+        }
+        if (document.getElementById("SubNav"))
+        {
+            HeaderHTML += `<a class="nav-link" href="${obj.nav[element].sub_path}">${obj.nav[element].content}</a>`;
         }
 
-        if (obj.nav[element] === obj.nav.Intership) {
-            console.log(element);
-            if (document.getElementById("Nav")) 
-            {
-                HeaderHTML += `<a class="nav-link" href="${obj.nav[element].path}" target="_blank">${obj.nav[element].content}</a>`;
-            }
-            if (document.getElementById("SubNav"))
-            {
-                HeaderHTML += `<a class="nav-link" href="${obj.nav[element].sub_path}" target="_blank">${obj.nav[element].content}</a>`;
-            }
-        }
-        
-        if (obj.nav[element] !== obj.nav.Technology_watch && obj.nav[element] !== obj.nav.Intership) {
-            console.log(element);
-            if (document.getElementById("Nav")) 
-            {
-                HeaderHTML += `<a class="nav-link" href="${obj.nav[element].path}">${obj.nav[element].content}</a>`;
-            }
-            if (document.getElementById("SubNav"))
-            {
-                HeaderHTML += `<a class="nav-link" href="${obj.nav[element].sub_path}">${obj.nav[element].content}</a>`;
-            }
-        }
 
     };
    
