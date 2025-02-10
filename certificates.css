@@ -1,0 +1,32 @@
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  } 
+  to {
+    transform: translateX(-100%);
+  } 
+}
+
+#certificates, #services {
+    background-color: #f7f7f7;
+    padding-bottom: 60px;
+
+}
+
+
+.logos {
+    overflow: hidden;
+    padding: 60px 0px;
+    display: flex;
+}
+
+.logo-slide {
+    white-space: nowrap;
+    animation: 60s slide infinite linear;
+}
+
+.logo-slide img {
+    height: 400px;
+    margin: 0 40px;
+}
+

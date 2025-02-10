@@ -72,7 +72,7 @@ nav .white {
     font-size: 36px;
     cursor: pointer;
 }
-.fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover,.fa-linkedin:hover, .fa-twitch:hover {
+.fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover,.fa-linkedin:hover, .fa-twitch:hover, .fa-github:hover, .fa-youtube:hover {
     color: #ff9900;
 }
 .fab {
@@ -85,7 +85,7 @@ nav .white {
 }
 
 /* spacing on all sections */
-#about, #services, #portfolio, #contact, #experiences-engagements {
+#about, #services, #portfolio, #contact, #experiences-engagements, #certificates {
     margin-top: 4rem;
     padding-top: 4rem;
 }
@@ -93,7 +93,24 @@ nav .white {
     padding-bottom: 4rem;
 }
 
-.btn-success {
-    background-color: #ff9900;
-    border: #ff9900;
+#footer {
+    margin-top: 4rem;;
+}
+
+.degrade {
+    height: 40px;
+}
+
+.degrade-1 {
+    background-color: #000000;
+}
+
+.degrade-2 {
+    background-color: #333333;
+}
+.degrade-3 {
+    background-color: #777;
+}
+.degrade-4 {
+    background-color: #BBB;
 }
