@@ -59,6 +59,8 @@ nav .white {
     color: white;
 }
 
+
+
 /* experience image styling */
 .card-body  {
     display: flex;
@@ -80,7 +82,7 @@ nav .white {
 }
 /* footer styling */
 #footer {
-    background-color: #808080;
+    background-color: #f7f7f7;
     text-align: center;
 }
 
@@ -114,3 +116,4 @@ nav .white {
 .degrade-4 {
     background-color: #BBB;
 }
+
