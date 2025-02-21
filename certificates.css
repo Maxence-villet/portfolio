@@ -7,6 +7,15 @@
   } 
 }
 
+@keyframes slide-2 {
+    from {
+      transform: translateX(-100%);
+    } 
+    to {
+      transform: translateX(0);
+    } 
+  }
+
 #certificates, #portfolio {
     background-color: #f7f7f7;
     padding-bottom: 60px;
@@ -18,23 +27,31 @@
     overflow: hidden;
     padding: 60px 0px;
     display: flex;
+    margin: 10px 0px;
 }
 
 .logo-slide {
     white-space: nowrap;
-    animation: 60s slide infinite linear;
+    animation: 360s slide infinite linear;
 }
 
-.logo-slide img {
-    height: 400px;
+.logo-slide img, .logo-slide-2 img {
+    height: 350px;
     margin: 0 40px;
 }
 
+.logo-slide-2 {
+    white-space: nowrap;
+    animation: 360s slide-2 infinite linear;
+}
+
+
 @media only screen and (max-width: 900px) {
-    .logo-slide img {
-        height: 100px;
+    .logo-slide img, .logo-slide-2 img {
+        height: 150px;
         margin: 0 10px;
     }
+  
 
     .logos {
         overflow: hidden;
