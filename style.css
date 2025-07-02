@@ -1,9 +1,19 @@
 /* hero background image */
 .bgimage {
-    height:100vh;
-    background: url('images/heroImage.jpeg');
-    background-size:cover;
-    position:relative;
+    height: 100vh;
+    background: url('images/heroImage.jpeg'); /* Image pour les ordinateurs de bureau par défaut */
+    background-size: cover;
+    position: relative;
+    background-position: center;
+}
+
+/* Media query pour les appareils avec une largeur maximale de 768px (typiquement les mobiles) */
+@media screen and (max-width: 768px) {
+    .bgimage {
+        background: url('images/heroImageMobile.jpeg'); /* Nouvelle image pour les mobiles */
+        background-size: cover; /* Assure que l'image couvre toujours l'arrière-plan */
+        background-position: center;
+    }
 }
 /* text css above hero image*/
 .hero_title {
