@@ -1,0 +1,735 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: black;
+    color: white;
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#ui-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    will-change: transform;
+}
+
+.section.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.section-scroll {
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.section-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.section-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+}
+
+h1 {
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    font-weight: 200;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.3em;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 2.2rem;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin: 1.5rem 0 0;
+    opacity: 0.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+}
+
+.hero-links {
+    margin-top: 2rem;
+}
+
+.btn-demo {
+    display: inline-block;
+    background: transparent;
+    border: 1.5px solid white;
+    color: white;
+    font-size: 0.7em;
+    font-weight: 300;
+    padding: 0.6rem 2rem;
+    border-radius: 0;
+    backdrop-filter: blur(8px);
+    background: rgba(30, 30, 30, 0.2);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+.btn-demo:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
+    border-color: white;
+}
+
+.links {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+    padding-bottom: 2px;
+    transition: border-color 0.3s, opacity 0.3s;
+}
+
+.links a:hover {
+    border-color: white;
+    opacity: 0.75;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    max-width: 1200px;
+}
+
+.card {
+    background: rgba(20, 20, 20, 0.25);
+    backdrop-filter: blur(10px);
+    padding: 1.1rem;
+    width: 230px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, border-color 0.3s;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 0.7rem;
+    filter: grayscale(0.5);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.card h3 {
+    margin: 0.35rem 0;
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.card p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.4rem 0;
+}
+
+.card .links {
+    margin-top: 0.6rem;
+    gap: 0.8rem;
+}
+
+.card .links a {
+    font-size: 0.78rem;
+}
+
+.xp-card img {
+    width: auto;
+    height: 38px;
+    max-width: 100%;
+    object-fit: contain;
+    border: none;
+    filter: grayscale(0.3);
+    margin-bottom: 0.55rem;
+    background: transparent;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0.5rem 0;
+}
+
+.badges span {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.about-panel {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 900px;
+    background: rgba(20, 20, 20, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 2.5rem;
+    text-align: left;
+    margin-top: 1.5rem;
+}
+
+.about-panel img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    filter: grayscale(0.5);
+    flex-shrink: 0;
+}
+
+.about-text .lead {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin: 0;
+}
+
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.1rem 0;
+}
+
+.about-list li {
+    padding: 0.22rem 0;
+    font-weight: 300;
+    font-size: 0.95rem;
+}
+
+.about-list strong {
+    font-weight: 400;
+}
+
+.about-list a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+}
+
+.about-text .badges {
+    justify-content: flex-start;
+}
+
+.muted {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+}
+
+.logos {
+    overflow: hidden;
+    display: flex;
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.logo-slide {
+    white-space: nowrap;
+    animation: slide 180s linear infinite;
+    flex-shrink: 0;
+}
+
+.logo-slide img {
+    height: 160px;
+    width: auto;
+    margin: 0 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    filter: grayscale(1) contrast(1.05);
+    opacity: 0.85;
+    vertical-align: middle;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.contact-line {
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin: 0.5rem 0 2rem;
+    opacity: 0.9;
+}
+
+.social-links {
+    gap: 1.5rem;
+}
+
+.social-links a {
+    font-size: 1rem;
+}
+
+.legal {
+    font-weight: 300;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 1.5rem 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: 2.5rem;
+}
+
+.legal p {
+    margin: 0.35rem 0;
+    letter-spacing: 0.1em;
+}
+
+#progress-bar-container {
+    position: fixed;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.progress-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.progress-dot.active {
+    background: white;
+    box-shadow: 0 0 20px white;
+    transform: scale(1.8);
+    border-color: white;
+}
+
+#speed-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: monospace;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+
+.hint {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.8rem;
+}
+
+.space-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+}
+
+/* Overlay d'introduction */
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 1s ease;
+    pointer-events: auto;
+}
+
+#intro-overlay h1 {
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 200;
+    letter-spacing: 0.5em;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+    border-bottom: none;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+#enter-btn {
+    background: transparent;
+    border: 1.5px solid white;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding: 1rem 4rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    background: rgba(30, 30, 30, 0.2);
+    transition: all 0.4s ease;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+#enter-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
+    border-color: white;
+}
+
+#intro-overlay p {
+    margin-top: 2rem;
+    opacity: 0.4;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+}
+
+#intro-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    width: 100px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: clamp(2.6rem, 15vw, 5rem);
+        letter-spacing: 0.2em;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .about-panel {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .about-panel img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .about-text .badges {
+        justify-content: center;
+    }
+
+    .card {
+        width: 160px;
+        padding: 1rem;
+    }
+
+    .card img {
+        height: 100px;
+    }
+
+    .logo-slide img {
+        height: 110px;
+        margin: 0 0.8rem;
+    }
+
+    #progress-bar-container {
+        right: 10px;
+        gap: 12px;
+    }
+}
+
+
+/* Cartes de contact : liens pleine hauteur, contenu centré. */
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    color: white;
+    text-decoration: none;
+}
+
+.contact-card:hover {
+    color: white;
+}
+
+.contact-card h3 {
+    font-size: 1.15rem;
+}
+
+.contact-card p {
+    word-break: break-word;
+}
+
+/* ==========================================================================
+   Projets & Expériences — cartes horizontales compactes (sans scrollbar)
+   ========================================================================== */
+#section-3,
+#section-4 {
+    padding: 1.25rem;
+}
+
+#section-3 h2,
+#section-4 h2 {
+    margin-bottom: 0.75rem;
+}
+
+/* Conteneurs : grille flex centrée, deux rangées maximum */
+#projects-grid,
+#experiences-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1160px;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+/* Carte horizontale : vignette à gauche, texte à droite */
+#projects-grid .card,
+#experiences-grid .card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    width: auto;
+    padding: 0.7rem 0.85rem;
+    gap: 0.8rem;
+    box-sizing: border-box;
+}
+
+#projects-grid .card:hover,
+#experiences-grid .card:hover {
+    transform: translateY(-2px);
+}
+
+#projects-grid .card .card-body,
+#experiences-grid .card .card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Projets : 3 par rangée (5 cartes -> 3 + 2) */
+#projects-grid .card {
+    flex: 0 1 calc((100% - 2 * 0.75rem) / 3);
+}
+
+/* Expériences : 4 par rangée (7 cartes -> 4 + 3) */
+#experiences-grid .card {
+    flex: 0 1 calc((100% - 3 * 0.75rem) / 4);
+}
+
+/* Vignettes */
+#projects-grid .card-thumb {
+    width: 92px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    flex-shrink: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+#experiences-grid .card-thumb {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    border: none;
+    flex-shrink: 0;
+    margin: 0;
+    background: transparent;
+}
+
+/* Typographie compacte */
+#projects-grid .card h3,
+#experiences-grid .card h3 {
+    margin: 0 0 0.15rem;
+    font-size: 0.98rem;
+}
+
+#projects-grid .card p,
+#experiences-grid .card p {
+    margin: 0.1rem 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+#experiences-grid .card p.muted {
+    font-size: 0.75rem;
+}
+
+#experiences-grid .card p:last-child {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+#experiences-grid .card .badges {
+    justify-content: flex-start;
+    margin: 0.3rem 0;
+    gap: 0.35rem;
+}
+
+#experiences-grid .card .badges span {
+    padding: 0.12rem 0.45rem;
+    font-size: 0.58rem;
+}
+
+#projects-grid .card .links {
+    margin-top: 0.35rem;
+    justify-content: flex-start;
+    gap: 0.8rem;
+}
+
+/* Tablette / mobile : colonnes réduites */
+@media (max-width: 900px) {
+    #projects-grid,
+    #experiences-grid {
+        max-width: 640px;
+        gap: 0.6rem;
+    }
+
+    #projects-grid .card {
+        flex: 0 1 100%;
+    }
+
+    #experiences-grid .card {
+        flex: 0 1 calc((100% - 0.6rem) / 2);
+    }
+
+    #projects-grid .card-thumb {
+        width: 72px;
+        height: 56px;
+    }
+
+    #experiences-grid .card-thumb {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+
+
+

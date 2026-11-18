@@ -1,551 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="certificates.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Maxence VILLET SCHOUMAKER · Développeur Full-Stack</title>
+    <meta name="description" content="Portfolio de Maxence VILLET SCHOUMAKER, développeur Full-Stack.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
 </head>
+
 <body>
-    
-    <nav class="navbar navbar-expand-lg fixed-top navbarScroll">
-        <div class="container">
-            <a class="navbar-brand white" href="#">PORTFOLIO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link white" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link white" href="#about">À Propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link white" href="#portfolio">Projets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link white" href="#experiences-engagements">Expériences & Engagements</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link white" href="#certificates">Certifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link white" href="#services">Soft Skills</a>
-                    </li>
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
-    
+    <!-- Overlay d'introduction pour démarrer l'expérience -->
+    <div id="intro-overlay">
+        <h1>Maxence</h1>
+        <button id="enter-btn">Entrer</button>
+        <p>Cliquez pour commencer l'expérience</p>
+    </div>
 
+    <div id="canvas-container"></div>
 
-     <!-- main banner -->
-     <section class="bgimage" id="home">
-        <div class="container-fluid">
-            <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-text">
-                <h2 class="hero_title">Hello, c'est moi Maxence </h2>
-                <p class="hero_desc">Je suis développeur Full-Stack</p>
-            </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- about section-->
-    <section id="about">
-        <div class="container mt-4 pt-4">
-            <h1 class="text-center">À Propos</h1>
-            <div class="row mt-4">
-                <div class="col-lg-4">
-                    <img src="images/about.png" class="imageAboutPage" alt="Photo de Maxence VILLET SCHOUMAKER">
+    <div id="ui-overlay">
+        <!-- Section 1 : Accueil -->
+        <div id="section-1" class="section active">
+            <div class="section-scroll scrollable">
+                <h1>Maxence</h1>
+                <p class="hero-subtitle">Développeur Full-Stack</p>
+                <div class="hero-actions">
+                    <button class="btn-demo" id="projects-cta">Voir mes projets</button>
+                    <a class="btn-demo" href="/cv.html" target="_blank" rel="noopener">CV</a>
                 </div>
+                <div class="links hero-links">
+                    <a href="https://github.com/Maxence-villet" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://www.linkedin.com/in/maxence-villet-schoumaker/" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </div>
+        </div>
 
-                <div class="col-lg-8">
-                    <p class="lead">
-                        Développeur Full-Stack prochainement en alternance passionné par les défis techniques et le travail collaboratif. 
-                        Rigoureux et discipliné, je combine méthodologies Agile (Scrum/Kanban) avec une solide expertise 
-                        technique pour livrer des solutions innovantes.
-                    </p>
-                    
-                    <div class="row mt-3">
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li><strong>Nom :</strong> Maxence VILLET SCHOUMAKER</li>
-                                <li><strong>Âge :</strong> 20 ans</li>
-                                <li><strong>Localisation :</strong> Maurepas (78)</li>
-                                <li><strong>Statut :</strong> Alternance (3 semaines entreprise / 2 semaines école)</li>
-                            </ul>
+        <!-- Section 2 : À Propos -->
+        <div id="section-2" class="section">
+            <div class="section-scroll scrollable">
+                <h2>À Propos</h2>
+                <div class="about-panel">
+                    <img src="/images/about.png" alt="Photo de Maxence VILLET SCHOUMAKER">
+                    <div class="about-text">
+                        <p class="lead">
+                            Développeur Full-Stack prochainement en alternance, passionné par les défis techniques et le
+                            travail collaboratif. Rigoureux et discipliné, je combine méthodologies Agile
+                            (Scrum/Kanban) avec une solide expertise technique pour livrer des solutions innovantes.
+                        </p>
+                        <ul class="about-list">
+                            <li><strong>Nom :</strong> Maxence VILLET SCHOUMAKER</li>
+                            <li><strong>Âge :</strong> 20 ans</li>
+                            <li><strong>Localisation :</strong> Maurepas (78)</li>
+                            <li><strong>Statut :</strong> Alternance (3 semaines entreprise / 2 semaines école)</li>
+                            <li><strong>Email :</strong> maxence.villetschoumaker@gmail.com</li>
+                            <li><strong>GitHub :</strong> <a href="https://github.com/Maxence-villet" target="_blank" rel="noopener">Maxence-villet</a></li>
+                        </ul>
+                        <div class="badges">
+                            <span>Agile (Scrum/Kanban)</span>
+                            <span>Full-Stack Polyvalent</span>
+                            <span>Autodidacte</span>
+                            <span>Vidéaste / Streamer</span>
                         </div>
-                        
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li><strong>Email :</strong> maxence.villetschoumaker@gmail.com</li>
-                                <li><strong>GitHub :</strong> <a href="https://github.com/Maxence-villet" target="_blank">Maxence-villet</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            <h5>Points forts</h5>
-                            <ul class="list-inline">
-                                <li class="list-inline-item badge bg-primary">Agile (Scrum/Kanban)</li>
-                                <li class="list-inline-item badge bg-success">Full-Stack Polyvalent</li>
-                                <li class="list-inline-item badge bg-info">Autodidacte</li>
-                                <li class="list-inline-item badge bg-warning">Vidéaste/Streamer</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <p>
-                            En parallèle de mon Bachelor à la Coding Factory, je développe des projets personnels (bots de scraping, 
-                            jeux éducatifs) pour explorer de nouvelles technologies. Passionné de tech et d'engagement communautaire, 
-                            je suis également ambassadeur académique.
+                        <p class="muted">
+                            En parallèle de mon Bachelor à la Coding Factory, je développe des projets personnels
+                            (bots de scraping, jeux éducatifs) pour explorer de nouvelles technologies.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
+        <!-- Section 3 : Projets -->
+        <div id="section-3" class="section">
+            <div class="section-scroll scrollable">
+                <h2>Projets</h2>
+                <div id="projects-grid"></div>
+            </div>
+        </div>
 
-    <!-- portfolio section-->
-    <section id="portfolio">
-        <div class="container mt-3">
-            <h1 class="text-center">Projets</h1>
-            <div class="row">
-                <div class="col-lg-4 mt-4">
-                    <div class="card">
-                        <img class="card-img-top" src="images/portfolioImage6.png" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                            <h4 class="card-title">Play with AI</h4>
-                            <p class="card-text">Jouer à un jeu de course seulement avec ma caméra et une détection de mes mains. Il a été fait en Python. J'arrive premier.</p>
-                            <div class="text-center">
-                                <a href="https://www.linkedin.com/posts/maxence-villet-schoumaker-developpeur-web-mobile_une-id%C3%A9e-brillante-pour-jouer-sans-souris-activity-7346184266977865728-cjGc?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD3ztlAB1dCDSyt2m7LY16JvIZt2w91t-pA" class="btn btn-primary"><i class="fa-brands fa-linkedin"></i></a>
+        <!-- Section 4 : Expériences & Engagements -->
+        <div id="section-4" class="section">
+            <div class="section-scroll scrollable">
+                <h2>Expériences &amp; Engagements</h2>
+                <div class="card-grid" id="experiences-grid"></div>
+            </div>
+        </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Section 5 : Certifications -->
+        <div id="section-5" class="section">
+            <div class="section-scroll scrollable">
+                <h2>Certifications</h2>
+                <div class="logos" id="certificates-logos"></div>
+            </div>
+        </div>
 
-                <div class="col-lg-4 mt-4">
-                    <div class="card">
-                        <img class="card-img-top" src="images/portfolioImage1.jpg" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                            <h4 class="card-title">PharmaPlus</h4>
-                            <p class="card-text">PharmaPlus est un outil de gestion de stock et de commandes pour les pharmacies. Il a été fait en Java.</p>
-                            <div class="text-center">
-                                <a href="https://github.com/Maxence-villet/PharmaPlus" class="btn btn-dark"><i class="fa-brands fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Section 6 : Soft Skills -->
+        <div id="section-6" class="section">
+            <div class="section-scroll scrollable">
+                <h2>Soft Skills</h2>
+                <div class="card-grid" id="skills-grid"></div>
+            </div>
+        </div>
 
-                <div class="col-lg-4 mt-4">
-                    <div class="card">
-                        <img class="card-img-top" src="images/portfolioImage5.png" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                            <h4 class="card-title">FalppyBird-AI</h4>
-                            <p class="card-text">Les oiseaux sont entraînés avec une IA génétique (N.E.A.T). Il a été fait en Python.</p>
-                            <div class="text-center">
-                                <a href="https://github.com/Maxence-villet/FlappyBird-AI" class="btn btn-dark"><i class="fa-brands fa-github"></i></a>
-                                <a href="https://www.youtube.com/watch?v=ITna4KpiNTM" class="btn btn-danger"><i class="fa-brands fa-youtube"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card portfolioContent">
-                        <img class="card-img-top" src="images/portfolioImage4.jpg" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                            <h4 class="card-title">Social-media</h4>
-                            <p class="card-text">Social-media est une simulation de connection entres utilisateurs à l'aide de graphes. Il a été fait en Python.</p>
-                            <div class="text-center">
-                                <a href="https://github.com/Maxence-villet/Social-media" class="btn btn-dark"><i class="fa-brands fa-github"></i></a>
-                                <a href="https://www.youtube.com/watch?v=llA73t6hmqQ" class="btn btn-danger"><i class="fa-brands fa-youtube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card portfolioContent">
-                        <img class="card-img-top" src="images/portfolioImage3.jpg" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                            <h4 class="card-title">universal paperclips clone</h4>
-                            <p class="card-text">Prévention aux dangers de l'AI grâce à un clicker game en React.</p>
-                            <div class="text-center">
-                                <a href="https://github.com/Maxence-villet/universal-paperclips" class="btn btn-dark"><i class="fa-brands fa-github"></i></a>
-                                <a href="https://www.linkedin.com/posts/maxence-villet-schoumaker_ia-aezthiquetechnologique-innovationresponsable-activity-7288486254390751232-gkZN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD3ztlAB1dCDSyt2m7LY16JvIZt2w91t-pA" class="btn btn-primary"><i class="fa-brands fa-linkedin"></i></a>
-                            </div>
-                        </div>
+        <!-- Section 7 : Contact / Crédits -->
+        <div id="section-7" class="section">
+            <div class="section-scroll scrollable">
+                <h2>Contact</h2>
+                <div class="card-grid" id="contact-stage">
+                    <a class="card contact-card" href="mailto:maxence.villetschoumaker@gmail.com">
+                        <h3>Email</h3>
+                        <p>maxence.villetschoumaker@gmail.com</p>
+                    </a>
+                    <a class="card contact-card" href="https://github.com/Maxence-villet" target="_blank" rel="noopener">
+                        <h3>GitHub</h3>
+                        <p>Maxence-villet</p>
+                    </a>
+                    <a class="card contact-card" href="https://www.linkedin.com/in/maxence-villet-schoumaker/" target="_blank" rel="noopener">
+                        <h3>LinkedIn</h3>
+                        <p>Maxence Villet Schoumaker</p>
+                    </a>
+                    <a class="card contact-card" href="https://www.twitch.tv/justyma_" target="_blank" rel="noopener">
+                        <h3>Twitch</h3>
+                        <p>justyma_</p>
+                    </a>
+                    <a class="card contact-card" href="https://www.youtube.com/@ma922yt" target="_blank" rel="noopener">
+                        <h3>YouTube</h3>
+                        <p>@ma922yt</p>
+                    </a>
+                    <div class="card contact-card">
+                        <h3>Crédits</h3>
+                        <p>© 2026 · Maxence VILLET SCHOUMAKER</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
+    </div>
 
-    
+    <!-- Barre de progression avec 7 points -->
+    <div id="progress-bar-container">
+        <div class="progress-dot active" data-index="0"></div>
+        <div class="progress-dot" data-index="1"></div>
+        <div class="progress-dot" data-index="2"></div>
+        <div class="progress-dot" data-index="3"></div>
+        <div class="progress-dot" data-index="4"></div>
+        <div class="progress-dot" data-index="5"></div>
+        <div class="progress-dot" data-index="6"></div>
+    </div>
+    <div id="speed-indicator">◈ STATION 1 · ACCUEIL</div>
+    <div class="hint">scroll ↓ · voyage</div>
+    <div class="space-hint">␣ ESPACE · AUTO-PILOT</div>
 
-    <!-- experience section -->
-    <section id="experiences-engagements">
-        <div class="container">
-            <h1 class="text-center">Expériences & Engagements</h1>
-            <div class="row">
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <img src="images/image6.jpg" alt="Image 3" class="img-fluid" style="width: 50px; height: 50px;">
-                            <h4 class="card-title mt-3">Développeur NextJS</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">new-webtech [Stage], Levallois-Perret (92)</h6>
-                            <div class="info-xp">
-                                <button type="button" class="btn btn-warning">9 semaines</button>
-                                <button type="button" class="btn btn-primary">Mai 2025 - Juillet 2025</button>
-                            </div>
-                            <p class="card-text mt-3">
-                                - Développement de features d'un SaaS
-                                - Debugging
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <img src="images/image1.png" alt="Image 1" class="img-fluid" style="width: 75px; height: 50px;">
-                            <h4 class="card-title mt-3">Développeur Java</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Coding Factory [Piscine], Paris 15 (75)</h6>
-                            <div class="info-xp">
-                                <button type="button" class="btn btn-warning">1 semaine</button>
-                                <button type="button" class="btn btn-primary">Septembre 2024</button>
-                            </div>
-                            <p class="card-text mt-3">
-                                - Utilisation de Java dans le but de créer un vaisseau. <br>
-                                - 3e au classement.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <img src="images/image2.jpg" alt="Image 2" class="img-fluid" style="width: 100px; height: 50px;">
-                            <h4 class="card-title mt-3">Développeur C#</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Econocom Group [Stage], Puteaux (92)</h6>
-                            <div class="info-xp">
-                                <button type="button" class="btn btn-warning">8 semaines</button>
-                                <button type="button" class="btn btn-primary">Décembre 2023 - Janvier 2024</button>
-                            </div>
-                            <p class="card-text mt-3">
-                                Développement d'un outil de monitoring en NET pour le suivi des
-                                processus du CRM de Econocom.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <img src="images/images3.jpg" alt="Image 3" class="img-fluid" style="width: 50px; height: 50px;">
-                            <h4 class="card-title mt-3">Designer UX</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">CIG Grande Couronne [Stage], Versailles (78)</h6>
-                            <div class="info-xp">
-                                <button type="button" class="btn btn-warning">7 semaines</button>
-                                <button type="button" class="btn btn-primary">Mai 2023 - Juillet 2023</button>
-                            </div>
-                            <p class="card-text mt-3">
-                                Montée de version d'outil ITSM.
-                                Participation à la conception de notifications mails (HTML/CSS).
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <img src="images/image1.png" alt="Image 4" class="img-fluid" style="width: 75px; height: 50px;">
-                            <h4 class="card-title mt-3">Ambassadeur Coding Factory</h4>
-                            <div class="info-xp">
-                                <button type="button" class="btn btn-warning">3 ans</button>
-                                <button type="button" class="btn btn-primary">Septembre 2024 - Juin 2027</button>
-                            </div>
-                            <p class="card-text mt-3">
-                                - Organisation des journées portes ouvertes <br>
-                                - Représentant Étudiant en dehors de l'école <br>
-                                - Représentant Étudiant à l'intérieur de l'école
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <img src="images/image4.png" alt="Image 4" class="img-fluid" style="width: 50px; height: 50px;">
-                            <h4 class="card-title mt-3">Restos Du Coeur</h4>
-                            <div class="info-xp">
-                                <button type="button" class="btn btn-warning">11 ans</button>
-                                <button type="button" class="btn btn-primary">2010 - 2021</button>
-                            </div>
-                            <p class="card-text mt-3">
-                                Participation à la collecte de fonds alimentaires, ainsi que la distribution de l'aide alimentaire.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <img src="images/image5.png" alt="Image 4" class="img-fluid" style="width: 75px; height: 50px;">
-                            <h4 class="card-title mt-3">Ambassadeur eTwinning</h4>
-                            <div class="info-xp">
-                                <button type="button" class="btn btn-warning">3 ans</button>
-                                <button type="button" class="btn btn-primary">2019 - 2022</button>
-                            </div>
-                            <p class="card-text mt-3">
-                                - Promouvoir eTwinning au sein du Lycée Louis Blériot à Trappes (78) <br>
-                                - Participation au project "PEK, the Traveller Flea"
-                            </p>
-                        </div>
-                    </div>
-                </div>
-    
-            </div>
-        </div>
-    </section>
-
-    <section id="certificates">
-        <h1 class="text-center mb-4">Certifications</h1>
-        <div class="logos">
-          <div class="logo-slide">
-            <img src="images/Certificates/0a55a965-7ef5-4ea3-b8df-86787d430df1.png" alt="0a55a965-7ef5-4ea3-b8df-86787d430df1">
-            <img src="images/Certificates/0d524d84-ae33-40f4-b097-37ace3717f9f.png" alt="0d524d84-ae33-40f4-b097-37ace3717f9f">
-            <img src="images/Certificates/8d807432-bc65-4a97-b990-549d40d51af9.png" alt="8d807432-bc65-4a97-6990-549d40d51af9">
-            <img src="images/Certificates/a08caaac-49d7-4500-9deb-01607113c7f2.png" alt="a08caaac-49d7-4500-9deb-01607113c7f2">
-            <img src="images/Certificates/ansii.png" alt="ansii">
-            <img src="images/Certificates/b3e47176-9249-41de-bf43-58f2a31f181e.png" alt="b3e47176-9249-41de-bf43-58f2a31f181e">
-            <img src="images/Certificates/certif_c++.png" alt="certif_c++">
-            <img src="images/Certificates/cisco.png" alt="cisco">
-            <img src="images/Certificates/cnil_mod1.png" alt="cnil_mod1">
-            <img src="images/Certificates/cnil_mod2.png" alt="cnil_mod2">
-            <img src="images/Certificates/cnil_Mod3.png" alt="cnil_Mod3">
-            <img src="images/Certificates/cnil_Mod4.png" alt="cnil_Mod4">
-            <img src="images/Certificates/cnill_Mod5.png" alt="cnill_Mod5">
-            <img src="images/Certificates/f5dedf3e-a6ba-4a60-96fb-7d880cfdc050.png" alt="f5dedf3e-a6ba-4a60-96fb-7d880cfdc050">
-            <img src="images/Certificates/intro_python.png" alt="intro_python">
-            <img src="images/Certificates/UC-8d129f6f-9136-49d0-803a-c9e7d2004e06.jpg" alt="UC-8d129f6f-9136-49d0-803a-c9e7d2004e06">
-            <img src="images/Certificates/UC-063b2006-adec-4c83-b863-8f1a9d1234dd.jpg" alt="UC-063b2006-adec-4c83-6863-8f1a9d1234dd">
-            <img src="images/Certificates/UC-eadd7505-9fc7-46a3-aee5-a3dd0f6cd69f.jpg" alt="UC-eadd7505-9fc7-46a3-aee5-a3dd0f6cd69f">
-            <img src="images/Certificates/42b23f24-b779-43e8-a6ea-22a82ab49c86_page-0001.jpg" alt="42b23f24-b779-43e8-a6ea-22a82ab49c86_page-0001">
-            <img src="images/Certificates/9f526a55-fa75-40a0-9087-6ec4192df8ed_page-0001.jpg" alt="9f526a55-fa75-40a0-9087-6ec4192df8ed_page-0001">
-            <img src="images/Certificates/certif_pointers_golang_page-0001.jpg" alt="certif_pointers_golang_page-0001">
-            <img src="images/Certificates/UC-07907f4f-c864-44f3-9a28-20c5e9f7a4da.jpg" alt="UC-07907f4f-c864-44f3-9a28-20c5e9f7a4da">
-          </div>
-          <div class="logo-slide">
-            <img src="images/Certificates/0a55a965-7ef5-4ea3-b8df-86787d430df1.png" alt="0a55a965-7ef5-4ea3-b8df-86787d430df1">
-            <img src="images/Certificates/0d524d84-ae33-40f4-b097-37ace3717f9f.png" alt="0d524d84-ae33-40f4-b097-37ace3717f9f">
-            <img src="images/Certificates/8d807432-bc65-4a97-b990-549d40d51af9.png" alt="8d807432-bc65-4a97-6990-549d40d51af9">
-            <img src="images/Certificates/a08caaac-49d7-4500-9deb-01607113c7f2.png" alt="a08caaac-49d7-4500-9deb-01607113c7f2">
-            <img src="images/Certificates/ansii.png" alt="ansii">
-            <img src="images/Certificates/b3e47176-9249-41de-bf43-58f2a31f181e.png" alt="b3e47176-9249-41de-bf43-58f2a31f181e">
-            <img src="images/Certificates/certif_c++.png" alt="certif_c++">
-            <img src="images/Certificates/cisco.png" alt="cisco">
-            <img src="images/Certificates/cnil_mod1.png" alt="cnil_mod1">
-            <img src="images/Certificates/cnil_mod2.png" alt="cnil_mod2">
-            <img src="images/Certificates/cnil_Mod3.png" alt="cnil_Mod3">
-            <img src="images/Certificates/cnil_Mod4.png" alt="cnil_Mod4">
-            <img src="images/Certificates/cnill_Mod5.png" alt="cnill_Mod5">
-            <img src="images/Certificates/f5dedf3e-a6ba-4a60-96fb-7d880cfdc050.png" alt="f5dedf3e-a6ba-4a60-96fb-7d880cfdc050">
-            <img src="images/Certificates/intro_python.png" alt="intro_python">
-            <img src="images/Certificates/UC-8d129f6f-9136-49d0-803a-c9e7d2004e06.jpg" alt="UC-8d129f6f-9136-49d0-803a-c9e7d2004e06">
-            <img src="images/Certificates/UC-063b2006-adec-4c83-b863-8f1a9d1234dd.jpg" alt="UC-063b2006-adec-4c83-6863-8f1a9d1234dd">
-            <img src="images/Certificates/UC-eadd7505-9fc7-46a3-aee5-a3dd0f6cd69f.jpg" alt="UC-eadd7505-9fc7-46a3-aee5-a3dd0f6cd69f">
-            <img src="images/Certificates/42b23f24-b779-43e8-a6ea-22a82ab49c86_page-0001.jpg" alt="42b23f24-b779-43e8-a6ea-22a82ab49c86_page-0001">
-            <img src="images/Certificates/9f526a55-fa75-40a0-9087-6ec4192df8ed_page-0001.jpg" alt="9f526a55-fa75-40a0-9087-6ec4192df8ed_page-0001">
-            <img src="images/Certificates/certif_pointers_golang_page-0001.jpg" alt="certif_pointers_golang_page-0001">
-            <img src="images/Certificates/UC-07907f4f-c864-44f3-9a28-20c5e9f7a4da.jpg" alt="UC-07907f4f-c864-44f3-9a28-20c5e9f7a4da">
-        </div>  
-        </div>
-
-        <div class="logos">
-            <div class="logo-slide-2">
-              <img src="images/Certificates/0a55a965-7ef5-4ea3-b8df-86787d430df1.png" alt="0a55a965-7ef5-4ea3-b8df-86787d430df1">
-              <img src="images/Certificates/0d524d84-ae33-40f4-b097-37ace3717f9f.png" alt="0d524d84-ae33-40f4-b097-37ace3717f9f">
-              <img src="images/Certificates/8d807432-bc65-4a97-b990-549d40d51af9.png" alt="8d807432-bc65-4a97-6990-549d40d51af9">
-              <img src="images/Certificates/a08caaac-49d7-4500-9deb-01607113c7f2.png" alt="a08caaac-49d7-4500-9deb-01607113c7f2">
-              <img src="images/Certificates/ansii.png" alt="ansii">
-              <img src="images/Certificates/b3e47176-9249-41de-bf43-58f2a31f181e.png" alt="b3e47176-9249-41de-bf43-58f2a31f181e">
-              <img src="images/Certificates/certif_c++.png" alt="certif_c++">
-              <img src="images/Certificates/cisco.png" alt="cisco">
-              <img src="images/Certificates/cnil_mod1.png" alt="cnil_mod1">
-              <img src="images/Certificates/cnil_mod2.png" alt="cnil_mod2">
-              <img src="images/Certificates/cnil_Mod3.png" alt="cnil_Mod3">
-              <img src="images/Certificates/cnil_Mod4.png" alt="cnil_Mod4">
-              <img src="images/Certificates/cnill_Mod5.png" alt="cnill_Mod5">
-              <img src="images/Certificates/f5dedf3e-a6ba-4a60-96fb-7d880cfdc050.png" alt="f5dedf3e-a6ba-4a60-96fb-7d880cfdc050">
-              <img src="images/Certificates/intro_python.png" alt="intro_python">
-              <img src="images/Certificates/UC-8d129f6f-9136-49d0-803a-c9e7d2004e06.jpg" alt="UC-8d129f6f-9136-49d0-803a-c9e7d2004e06">
-              <img src="images/Certificates/UC-063b2006-adec-4c83-b863-8f1a9d1234dd.jpg" alt="UC-063b2006-adec-4c83-6863-8f1a9d1234dd">
-              <img src="images/Certificates/UC-eadd7505-9fc7-46a3-aee5-a3dd0f6cd69f.jpg" alt="UC-eadd7505-9fc7-46a3-aee5-a3dd0f6cd69f">
-              <img src="images/Certificates/42b23f24-b779-43e8-a6ea-22a82ab49c86_page-0001.jpg" alt="42b23f24-b779-43e8-a6ea-22a82ab49c86_page-0001">
-              <img src="images/Certificates/9f526a55-fa75-40a0-9087-6ec4192df8ed_page-0001.jpg" alt="9f526a55-fa75-40a0-9087-6ec4192df8ed_page-0001">
-              <img src="images/Certificates/certif_pointers_golang_page-0001.jpg" alt="certif_pointers_golang_page-0001">
-              <img src="images/Certificates/UC-07907f4f-c864-44f3-9a28-20c5e9f7a4da.jpg" alt="UC-07907f4f-c864-44f3-9a28-20c5e9f7a4da">
-            </div>
-            <div class="logo-slide-2">
-              <img src="images/Certificates/0a55a965-7ef5-4ea3-b8df-86787d430df1.png" alt="0a55a965-7ef5-4ea3-b8df-86787d430df1">
-              <img src="images/Certificates/0d524d84-ae33-40f4-b097-37ace3717f9f.png" alt="0d524d84-ae33-40f4-b097-37ace3717f9f">
-              <img src="images/Certificates/8d807432-bc65-4a97-b990-549d40d51af9.png" alt="8d807432-bc65-4a97-6990-549d40d51af9">
-              <img src="images/Certificates/a08caaac-49d7-4500-9deb-01607113c7f2.png" alt="a08caaac-49d7-4500-9deb-01607113c7f2">
-              <img src="images/Certificates/ansii.png" alt="ansii">
-              <img src="images/Certificates/b3e47176-9249-41de-bf43-58f2a31f181e.png" alt="b3e47176-9249-41de-bf43-58f2a31f181e">
-              <img src="images/Certificates/certif_c++.png" alt="certif_c++">
-              <img src="images/Certificates/cisco.png" alt="cisco">
-              <img src="images/Certificates/cnil_mod1.png" alt="cnil_mod1">
-              <img src="images/Certificates/cnil_mod2.png" alt="cnil_mod2">
-              <img src="images/Certificates/cnil_Mod3.png" alt="cnil_Mod3">
-              <img src="images/Certificates/cnil_Mod4.png" alt="cnil_Mod4">
-              <img src="images/Certificates/cnill_Mod5.png" alt="cnill_Mod5">
-              <img src="images/Certificates/f5dedf3e-a6ba-4a60-96fb-7d880cfdc050.png" alt="f5dedf3e-a6ba-4a60-96fb-7d880cfdc050">
-              <img src="images/Certificates/intro_python.png" alt="intro_python">
-              <img src="images/Certificates/UC-8d129f6f-9136-49d0-803a-c9e7d2004e06.jpg" alt="UC-8d129f6f-9136-49d0-803a-c9e7d2004e06">
-              <img src="images/Certificates/UC-063b2006-adec-4c83-b863-8f1a9d1234dd.jpg" alt="UC-063b2006-adec-4c83-6863-8f1a9d1234dd">
-              <img src="images/Certificates/UC-eadd7505-9fc7-46a3-aee5-a3dd0f6cd69f.jpg" alt="UC-eadd7505-9fc7-46a3-aee5-a3dd0f6cd69f">
-              <img src="images/Certificates/42b23f24-b779-43e8-a6ea-22a82ab49c86_page-0001.jpg" alt="42b23f24-b779-43e8-a6ea-22a82ab49c86_page-0001">
-              <img src="images/Certificates/9f526a55-fa75-40a0-9087-6ec4192df8ed_page-0001.jpg" alt="9f526a55-fa75-40a0-9087-6ec4192df8ed_page-0001">
-              <img src="images/Certificates/certif_pointers_golang_page-0001.jpg" alt="certif_pointers_golang_page-0001">
-              <img src="images/Certificates/UC-07907f4f-c864-44f3-9a28-20c5e9f7a4da.jpg" alt="UC-07907f4f-c864-44f3-9a28-20c5e9f7a4da">
-            </div>  
-          </div>
-    </section>
-
-    
-
-
-
-
-    <!-- Soft Skills section-->
-    <section id="services">
-        <div class="container">
-            <h1 class="text-center">Soft Skills</h1>
-            <div class="row">
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <i class="fas servicesIcon fa-users"></i>
-                            <h4 class="card-title mt-3">Travail d'équipe</h4>
-                            <p class="card-text mt-3">
-                                Forte affinité pour le travail collaboratif, développée à travers des projets académiques 
-                                et professionnels. Expérience en méthodologies Agile (Scrum, Kanban) pour une collaboration 
-                                efficace.
-                            </p>
-                        </div>
-                    </div>  
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <i class='fas servicesIcon fa-lightbulb'></i>
-                            <h4 class="card-title mt-3">Créativité</h4>
-                            <p class="card-text mt-3">
-                                Passion pour l'art et la création, avec une expérience en chant et théâtre. Capacité à 
-                                penser "outside the box" pour résoudre des problèmes techniques et concevoir des solutions 
-                                innovantes.
-                            </p>
-                        </div>
-                    </div>  
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <i class='fas servicesIcon fa-tasks'></i>
-                            <h4 class="card-title mt-3">Rigueur</h4>
-                            <p class="card-text mt-3">
-                                Discipline et rigueur dans mes engagements, qu'ils soient professionnels ou personnels 
-                                (fitness, lecture). Capacité à respecter les délais et à maintenir une qualité constante 
-                                dans mon travail.
-                            </p>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <i class='fas servicesIcon fa-comments'></i>
-                            <h4 class="card-title mt-3">Communication</h4>
-                            <p class="card-text mt-3">
-                                Compétences en communication persuasive développées lors de présentations techniques 
-                                et de démonstrations. Expérience en animation de communauté (streaming, vidéos).
-                            </p>
-                        </div>
-                    </div>  
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <i class='fas servicesIcon fa-brain'></i>
-                            <h4 class="card-title mt-3">Apprentissage rapide</h4>
-                            <p class="card-text mt-3">
-                                Capacité à monter rapidement en compétences sur de nouvelles technologies (Go, Rust, .NET) 
-                                en mode autodidacte. Certifications obtenues en parallèle des études.
-                            </p>
-                        </div>
-                    </div>  
-                </div>
-
-                <div class="col-lg-4 mt-4">
-                    <div class="card servicesText">
-                        <div class="card-body">
-                            <i class='fas servicesIcon fa-hands-helping'></i>
-                            <h4 class="card-title mt-3">Engagement</h4>
-                            <p class="card-text mt-3">
-                                Implication dans des associations (Restos du Cœur, Conseil de vie lycéenne) et en tant 
-                                qu'ambassadeur (Coding Factory, eTwinning). Volonté de contribuer positivement à la communauté.
-                            </p>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- footer section-->
-    <footer id="footer">
-        <div class="container-fluid">
-            <!-- social media icons -->
-            <div class="social-icons mt-4">
-                <a href="https://github.com/Maxence-villet" target="_blank"><i class="fa-brands fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/maxence-villet-schoumaker/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.twitch.tv/justyma_" target="_blank"><i class="fab fa-twitch"></i></a>
-                <a href="https://www.youtube.com/@ma922yt" target="_blank"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>
