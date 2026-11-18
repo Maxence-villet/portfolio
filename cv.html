@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxence VILLET SCHOUMAKER | Développeur Full-Stack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4285F4;
+            --secondary: #34A853;
+            --accent: #EA4335;
+            --background: #FAFBFD;
+            --surface: #FFFFFF;
+            --text-primary: #202124;
+            --text-secondary: #5F6368;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+        
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: rgba(66, 133, 244, 0.1);
+            color: var(--primary);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(66, 133, 244, 0.1);
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            background: rgba(66, 133, 244, 0.1);
+            color: var(--primary);
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header avec Contact -->
+        <header class="mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+                <div>
+                    <h1 class="text-4xl sm:text-5xl font-bold mb-2">Maxence <span class="gradient-text">VILLET SCHOUMAKER</span></h1>
+                    <h2 class="text-xl sm:text-2xl text-gray-600">Développeur Full-Stack</h2>
+                    <p class="mt-4 text-gray-500">En recherche d'Alternance - 2 semaines école / 3 semaines entreprise (24 mois)</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-blue-500"></i>
+                            <span>maxence.villetschoumaker@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3 text-blue-500"></i>
+                            <span>(+33) 7 83 02 39 94</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-linkedin mt-1 mr-3 text-blue-500"></i>
+                            <span>@maxence-villet-schoumaker</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-github mt-1 mr-3 text-blue-500"></i>
+                            <span>Maxence-villet</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-globe mt-1 mr-3 text-blue-500"></i>
+                            <a href="https://maxence-villet.github.io/portfolio/" class="hover:underline">Portfolio</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenu principal en une colonne -->
+        <div class="space-y-8">
+            <!-- Profil -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">Profil</h3>
+                <p class="text-gray-700">Je suis une personne qui aime le challenge avec une affinité pour le travail d'équipe. Passionné par le développement et les nouvelles technologies, je cherche constamment à apprendre et à me perfectionner.</p>
+            </div>
+
+            <!-- Expérience Professionnelle -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-6">Expérience Professionnelle</h3>
+                <div class="space-y-8">
+                    <!-- Exp 1 -->
+                    <div class="relative pl-8 pb-8 border-l-2 border-blue-100 last:border-l-0 last:pb-0">
+                        <div class="absolute w-4 h-4 rounded-full bg-blue-500 -left-2 top-1"></div>
+                        <div class="flex flex-col sm:flex-row justify-between gap-2 mb-2">
+                            <h4 class="font-bold text-lg">Développeur Java</h4>
+                            <span class="text-sm text-gray-500">septembre 2024 (1 semaine)</span>
+                        </div>
+                        <div class="flex items-center mb-3">
+                            <span class="font-medium text-gray-700">Coding Factory [Piscine]</span>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-sm text-gray-500">Paris 15 (75)</span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Utilisation de Java dans le but de créer un vaisseau</li>
+                            <li>3e au classement</li>
+                        </ul>
+                    </div>
+
+                    <!-- Exp 2 -->
+                    <div class="relative pl-8 pb-8 border-l-2 border-blue-100 last:border-l-0 last:pb-0">
+                        <div class="absolute w-4 h-4 rounded-full bg-blue-500 -left-2 top-1"></div>
+                        <div class="flex flex-col sm:flex-row justify-between gap-2 mb-2">
+                            <h4 class="font-bold text-lg">Développeur C#</h4>
+                            <span class="text-sm text-gray-500">décembre 2023 à janvier 2024 (8 semaines)</span>
+                        </div>
+                        <div class="flex items-center mb-3">
+                            <span class="font-medium text-gray-700">Econocom Group [Stage]</span>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-sm text-gray-500">Puteaux (92)</span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Développement d'un outil de monitoring en .NET pour le suivi des processus du CRM</li>
+                            <li>Utilisation du framework MetroFramework et WinForms</li>
+                            <li>Liaison entre Azure Storage et l'outil de monitoring</li>
+                        </ul>
+                    </div>
+
+                    <!-- Exp 3 -->
+                    <div class="relative pl-8 pb-8 border-l-2 border-blue-100 last:border-l-0 last:pb-0">
+                        <div class="absolute w-4 h-4 rounded-full bg-blue-500 -left-2 top-1"></div>
+                        <div class="flex flex-col sm:flex-row justify-between gap-2 mb-2">
+                            <h4 class="font-bold text-lg">Designer UX</h4>
+                            <span class="text-sm text-gray-500">mai à juillet 2023 (7 semaines)</span>
+                        </div>
+                        <div class="flex items-center mb-3">
+                            <span class="font-medium text-gray-700">CIG Grande Couronne [Stage]</span>
+                            <span class="mx-2 text-gray-400">•</span>
+                            <span class="text-sm text-gray-500">Versailles (78)</span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Montée de version d'outil ITSM</li>
+                            <li>Conception de notifications mails (HTML/CSS)</li>
+                            <li>Refonte de l'interface utilisateur avec Design Thinking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projets -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-6">Projets</h3>
+                <div class="space-y-6">
+
+                    <!-- Project 1 -->
+                    <div class="border rounded-xl p-5 hover:border-blue-300 transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-bold">Srapper</h4>
+                            <span class="pill">En cours</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Bot de scrapping pour coupons Udemy</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">GO</span>
+                            <span class="tag">Discord API</span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="border rounded-xl p-5 hover:border-blue-300 transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-bold">Universal Paperclips clone</h4>
+                            <span class="pill">Terminé</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Clone JavaScript sur les dangers de l'IA</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML/CSS</span>
+                        </div>
+                    </div>
+
+                    
+
+                    <!-- Project 3 -->
+                    <div class="border rounded-xl p-5 hover:border-blue-300 transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-bold">Memorisia</h4>
+                            <span class="pill">Terminé</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Plateforme de jeux pour la mémoire</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">PHP</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">MariaDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">Formation</h3>
+                <div class="space-y-5">
+                    <div>
+                        <h4 class="font-bold">Bachelor Développeur Full-Stack</h4>
+                        <p class="text-sm text-gray-500 mb-1">Coding Factory • 2024-2027</p>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            <li>Méthodologie Agile (Scrum, Kanban)</li>
+                            <li>1 semaine / 1 projet / 1 technologie</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold">BTS SIO SLAM</h4>
+                        <p class="text-sm text-gray-500">Lycée Parc de Vilgénis • 2022-2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">Certifications</h3>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-medium">Coddytech</h4>
+                        <p class="text-sm text-gray-600">Golang • 2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">Udemy</h4>
+                        <p class="text-sm text-gray-600">Linux, PHP, Docker, Rust • 2023-2024</p>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">Sololearn</h4>
+                        <p class="text-sm text-gray-600">Python, C++, JS, SQL • 2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compétences -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">Compétences</h3>
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-medium mb-1">Algorithmie</h4>
+                        <div class="flex flex-wrap">
+                            <span class="tag">Rust</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">.NET</span>
+                            <span class="tag">GO</span>
+                            <span class="tag">Java</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-medium mb-1">Web</h4>
+                        <div class="flex flex-wrap">
+                            <span class="tag">PHP</span>
+                            <span class="tag">Bootstrap</span>
+                            <span class="tag">JS (Ajax)</span>
+                            <span class="tag">React</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-medium mb-1">Bases de données</h4>
+                        <div class="flex flex-wrap">
+                            <span class="tag">SQL</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">MariaDB</span>
+                            <span class="tag">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Langues -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">Langues</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>Anglais</span>
+                            <span class="text-sm text-gray-500">B1</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>Français</span>
+                            <span class="text-sm text-gray-500">C2</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
