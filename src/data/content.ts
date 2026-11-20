@@ -1,5 +1,36 @@
 // Positions des stations le long de l'axe Z (le voyage descend vers -Z).
-export const STATIONS = [
+export interface Station {
+    z: number;
+}
+
+export interface ProjectLink {
+    label: string;
+    href: string;
+}
+
+export interface Project {
+    title: string;
+    image: string;
+    description: string;
+    links: ProjectLink[];
+}
+
+export interface Experience {
+    title: string;
+    subtitle: string;
+    contract: string;
+    period: string;
+    description: string;
+    /** Logo de l'entreprise ; absent s'il n'est pas encore fourni. */
+    image?: string;
+}
+
+export interface SoftSkill {
+    title: string;
+    description: string;
+}
+
+export const STATIONS: Station[] = [
     { z: 200 },
     { z: -700 },
     { z: -1600 },
@@ -9,7 +40,7 @@ export const STATIONS = [
     { z: -5200 }
 ];
 
-export const STATION_NAMES = [
+export const STATION_NAMES: string[] = [
     'ACCUEIL',
     'À PROPOS',
     'PROJETS',
@@ -19,7 +50,7 @@ export const STATION_NAMES = [
     'CONTACT'
 ];
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
     {
         title: 'Play with AI',
         image: '/images/portfolioImage6.png',
@@ -65,66 +96,82 @@ export const PROJECTS = [
     }
 ];
 
-export const EXPERIENCES = [
+export const EXPERIENCES: Experience[] = [
     {
-        title: 'Développeur NextJS',
-        subtitle: 'new-webtech [Stage] · Levallois-Perret (92)',
-        duration: '9 semaines',
-        period: 'Mai 2025 – Juillet 2025',
-        description: 'Développement de features d\'un SaaS, debugging.',
-        image: '/images/image6.jpg'
+        title: 'Consultant Technique Salesforce',
+        subtitle: 'Cloudity · Courbevoie (92)',
+        contract: 'Alternance',
+        period: 'Septembre 2025 – aujourd\'hui',
+        description: 'Expert data migration sur SWEEP, Carl Software, CRIT, MVG, Axway et Plénitude Arena. Migration et déploiement de données et métadonnées Revenue Cloud sur différentes instances Salesforce.',
+        image: '/images/logo-cloudity.png'
     },
     {
-        title: 'Développeur Java',
-        subtitle: 'Coding Factory [Piscine] · Paris 15 (75)',
-        duration: '1 semaine',
-        period: 'Septembre 2024',
-        description: 'Création d\'un vaisseau en Java. 3e au classement.',
-        image: '/images/image1.png'
+        title: 'Expert Data Migration & Consultant Salesforce',
+        subtitle: 'Axway',
+        contract: 'Mission',
+        period: 'Octobre 2026 – aujourd\'hui',
+        description: 'Expert data migration et conseil Salesforce. Accompagnement pour l\'alignement des données et métadonnées métier / technique.',
+        image: '/images/logo-axway.png'
+    },
+    {
+        title: 'Consultant Salesforce Revenue Cloud',
+        subtitle: 'Carl Software',
+        contract: 'Mission',
+        period: 'Février 2025 – Septembre 2026',
+        description: 'Pilotage de la transformation digitale d\'un chiffrier Excel (25 ans) vers Revenue Cloud : Quote-to-Cash-to-Billing-to-Contract. Conception et déploiement du catalogue produits et objets liés multi-instances.',
+        image: '/images/logo-carl-software.png'
+    },
+    {
+        title: 'Consultant Salesforce — Data Migration',
+        subtitle: 'SWEEP',
+        contract: 'Mission',
+        period: 'Septembre 2025 – Janvier 2026',
+        description: 'Migration data et metadata Revenue Cloud multi-instances : SFDMU, Salesforce CLI, Salesforce Inspector. Autonomie totale sur une fonctionnalité récente et instable de Salesforce (Revenue Cloud Advanced / Billing).',
+        image: '/images/logo-sweep.png'
     },
     {
         title: 'Développeur C#',
-        subtitle: 'Econocom Group [Stage] · Puteaux (92)',
-        duration: '8 semaines',
+        subtitle: 'Econocom Group · Puteaux (92)',
+        contract: 'Stage',
         period: 'Décembre 2023 – Janvier 2024',
-        description: 'Développement d\'un outil de monitoring en .NET pour le suivi des processus du CRM Econocom.',
-        image: '/images/image2.jpg'
+        description: 'Outil de monitoring .NET (WinForms, Azure Storage) pour le suivi des processus du CRM.',
+        image: '/images/logo-econonocom.png'
     },
     {
         title: 'Designer UX',
-        subtitle: 'CIG Grande Couronne [Stage] · Versailles (78)',
-        duration: '7 semaines',
+        subtitle: 'CIG Grande Couronne · Versailles (78)',
+        contract: 'Stage',
         period: 'Mai 2023 – Juillet 2023',
-        description: 'Montée de version d\'un outil ITSM. Participation à la conception de notifications mails (HTML/CSS).',
-        image: '/images/images3.jpg'
+        description: 'Refonte UX (Design Thinking) d\'un outil ITSM ; notifications HTML/CSS, UML et analyse de données.',
+        image: '/images/logo-cig.jpg'
     },
     {
         title: 'Ambassadeur Coding Factory',
         subtitle: 'Coding Factory · Paris',
-        duration: '3 ans',
-        period: 'Septembre 2024 – Juin 2027',
+        contract: 'Engagement',
+        period: '2024 – aujourd\'hui · 3 ans',
         description: 'Organisation des journées portes ouvertes, représentant étudiant.',
-        image: '/images/image1.png'
+        image: '/images/logo-coding-factory.png'
     },
     {
         title: 'Restos du Cœur',
         subtitle: 'Engagement associatif',
-        duration: '11 ans',
-        period: '2010 – 2021',
-        description: 'Collecte de fonds alimentaires et distribution de l\'aide alimentaire.',
-        image: '/images/image4.png'
+        contract: 'Bénévolat',
+        period: '2010 – 2021 · 11 ans',
+        description: 'Distribution et collecte alimentaire.',
+        image: '/images/logo-resto-du-coeur.png'
     },
     {
         title: 'Ambassadeur eTwinning',
         subtitle: 'Lycée Louis Blériot · Trappes (78)',
-        duration: '3 ans',
-        period: '2019 – 2022',
+        contract: 'Engagement',
+        period: '2019 – 2022 · 3 ans',
         description: 'Promotion d\'eTwinning au sein du lycée, participation au projet « PEK, the Traveller Flea ».',
-        image: '/images/image5.png'
+        image: '/images/logo-etwinning.png'
     }
 ];
 
-export const SOFT_SKILLS = [
+export const SOFT_SKILLS: SoftSkill[] = [
     {
         title: 'Travail d\'équipe',
         description: 'Forte affinité pour le travail collaboratif, développée à travers des projets académiques et professionnels. Expérience en méthodologies Agile (Scrum, Kanban).'
@@ -151,7 +198,7 @@ export const SOFT_SKILLS = [
     }
 ];
 
-export const CERTIFICATES = [
+export const CERTIFICATES: string[] = [
     '/images/Certificates/0a55a965-7ef5-4ea3-b8df-86787d430df1.png',
     '/images/Certificates/0d524d84-ae33-40f4-b097-37ace3717f9f.png',
     '/images/Certificates/8d807432-bc65-4a97-b990-549d40d51af9.png',

@@ -1,29 +1,51 @@
+import type * as THREE from 'three';
+
+export interface TravelStation {
+    z: number;
+}
+
+export type StationChangeHandler = (index: number) => void;
+export type NearStationHandler = (index: number, isNear: boolean) => void;
+export type DepartureHandler = () => void;
+
 export class TravelController {
-    constructor(stations, camera, onStationChange) {
+    private readonly stations: readonly TravelStation[];
+    private readonly camera: THREE.PerspectiveCamera;
+    private readonly onStationChange: StationChangeHandler;
+
+    onNearStationChange: NearStationHandler | null = null;
+    onDeparture: DepartureHandler | null = null;
+
+    currentIndex = 0;
+    velocityZ = 0;
+    scrollVelocity = 0;
+    isScrolling = false;
+    autoPilot = false;
+    autoPilotTargetIndex = -1;
+    arrivalPause = false;
+    arrivalPauseTimer = 0;
+    wasStationary = true;
+    isDirectReturn = false;
+    hasLeftStation = false;
+
+    private readonly MAX_SPEED = 24.0;
+    private readonly ACCEL = 1.2;
+    private readonly FRICTION = 0.94;
+    private readonly SNAP_DIST = 5.0;
+    private readonly ARRIVAL_PAUSE_DURATION = 2000;
+    private readonly DECEL_ZONE = 300;
+
+    private baseCameraZ: number;
+    private scrollTimeout: ReturnType<typeof setTimeout> | undefined;
+
+    constructor(
+        stations: readonly TravelStation[],
+        camera: THREE.PerspectiveCamera,
+        onStationChange: StationChangeHandler
+    ) {
         this.stations = stations;
         this.camera = camera;
         this.onStationChange = onStationChange;
-        this.onNearStationChange = null;
-        this.onDeparture = null;
-
-        this.currentIndex = 0;
-        this.velocityZ = 0;
-        this.scrollVelocity = 0;
-        this.isScrolling = false;
-        this.autoPilot = false;
-        this.autoPilotTargetIndex = -1;
-        this.arrivalPause = false;
-        this.arrivalPauseTimer = 0;
-        this.wasStationary = true;
-        this.isDirectReturn = false;
-        this.hasLeftStation = false;
-
-        this.MAX_SPEED = 24.0;
-        this.ACCEL = 1.2;
-        this.FRICTION = 0.94;
-        this.SNAP_DIST = 5.0;
-        this.ARRIVAL_PAUSE_DURATION = 2000;
-        this.DECEL_ZONE = 300;
 
         this.baseCameraZ = stations[0].z;
         this.camera.position.z = this.baseCameraZ;
@@ -31,7 +53,7 @@ export class TravelController {
         this._bindEvents();
     }
 
-    _findScrollable(el) {
+    private _findScrollable(el: Element | null): Element | null {
         while (el && el !== document.body && el !== document.documentElement) {
             if (el.classList && el.classList.contains('scrollable')) return el;
             el = el.parentElement;
@@ -39,9 +61,9 @@ export class TravelController {
         return null;
     }
 
-    _bindEvents() {
-        window.addEventListener('wheel', (e) => {
-            const scrollable = this._findScrollable(e.target);
+    private _bindEvents(): void {
+        window.addEventListener('wheel', (e: WheelEvent) => {
+            const scrollable = this._findScrollable(e.target as Element | null);
             if (scrollable) {
                 const canScrollUp = scrollable.scrollTop > 0;
                 const canScrollDown = scrollable.scrollTop + scrollable.clientHeight < scrollable.scrollHeight - 1;
@@ -61,9 +83,11 @@ export class TravelController {
         }, { passive: false });
 
         let touchStart = 0;
-        window.addEventListener('touchstart', (e) => { touchStart = e.touches[0].clientY; });
-        window.addEventListener('touchmove', (e) => {
-            const scrollable = this._findScrollable(e.target);
+        window.addEventListener('touchstart', (e: TouchEvent) => {
+            touchStart = e.touches[0].clientY;
+        });
+        window.addEventListener('touchmove', (e: TouchEvent) => {
+            const scrollable = this._findScrollable(e.target as Element | null);
             if (scrollable) {
                 const canScrollUp = scrollable.scrollTop > 0;
                 const canScrollDown = scrollable.scrollTop + scrollable.clientHeight < scrollable.scrollHeight - 1;
@@ -83,7 +107,7 @@ export class TravelController {
             this.scrollTimeout = setTimeout(() => { this.isScrolling = false; }, 150);
         }, { passive: false });
 
-        window.addEventListener('keydown', (e) => {
+        window.addEventListener('keydown', (e: KeyboardEvent) => {
             if (e.code === 'Space') {
                 e.preventDefault();
                 this.autoPilot = !this.autoPilot;
@@ -102,7 +126,7 @@ export class TravelController {
         });
     }
 
-    jumpToStation(index) {
+    jumpToStation(index: number): void {
         this.currentIndex = index;
         this.velocityZ = 0;
         this.arrivalPause = false;
@@ -115,7 +139,7 @@ export class TravelController {
         this.onStationChange(index);
     }
 
-    update(now, lastTime) {
+    update(now: number, lastTime: number): number {
         const dt = now - lastTime;
 
         if (this.arrivalPause) {
@@ -243,7 +267,7 @@ export class TravelController {
         return Math.min(Math.abs(this.velocityZ) / this.MAX_SPEED, 1.0);
     }
 
-    get currentStationIndex() {
+    get currentStationIndex(): number {
         return this.currentIndex;
     }
 }

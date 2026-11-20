@@ -1,16 +1,24 @@
 import * as THREE from 'three';
 
+interface StarLayerConfig {
+    count: number;
+    radius: number;
+    size: number;
+}
+
 export class Starfield {
-    constructor(scene) {
+    private readonly scene: THREE.Scene;
+    private readonly starLayers: THREE.Points[] = [];
+
+    constructor(scene: THREE.Scene) {
         this.scene = scene;
-        this.starLayers = [];
 
         this._createStars();
         this._createSprites();
     }
 
-    _createStars() {
-        const configs = [
+    private _createStars(): void {
+        const configs: StarLayerConfig[] = [
             { count: 5000, radius: 800, size: 0.2 },
             { count: 4000, radius: 1400, size: 0.3 },
             { count: 2500, radius: 2200, size: 0.45 },
@@ -55,11 +63,13 @@ export class Starfield {
         });
     }
 
-    _createSprites() {
+    private _createSprites(): void {
         const canvas = document.createElement('canvas');
         canvas.width = 64;
         canvas.height = 64;
         const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
         const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
         gradient.addColorStop(0, 'white');
         gradient.addColorStop(0.6, 'rgba(255,255,255,0.7)');
@@ -88,14 +98,14 @@ export class Starfield {
         }
     }
 
-    updateParallax(cameraZ) {
+    updateParallax(cameraZ: number): void {
         this.starLayers[0].position.z = cameraZ * 0.02;
         this.starLayers[1].position.z = cameraZ * 0.05;
         this.starLayers[2].position.z = cameraZ * 0.1;
         this.starLayers[3].position.z = cameraZ * 0.16;
     }
 
-    rotate(yRot = 0.00015, xRot = 0.0001) {
+    rotate(yRot = 0.00015, xRot = 0.0001): void {
         this.starLayers[0].rotation.y += yRot;
         this.starLayers[1].rotation.x += xRot;
     }

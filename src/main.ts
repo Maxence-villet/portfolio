@@ -13,28 +13,38 @@ import {
 import { UIManager } from './ui/UIManager.js';
 import { TravelController } from './travel/TravelController.js';
 import { PostProcessing } from './effects/PostProcessing.js';
+import type { ProjectLink } from './data/content.js';
 
-function escapeHtml(value) {
-    return String(value).replace(/[&<>"']/g, (c) => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-    })[c]);
+// Préfixe les fichiers de public/ avec la base Vite ('/portfolio/' sur
+// GitHub Pages, '/' en développement).
+const asset = (path: string): string =>
+    `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
+const ESCAPE_MAP: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+};
+
+function escapeHtml(value: string): string {
+    return String(value).replace(/[&<>"']/g, (c) => ESCAPE_MAP[c] ?? c);
 }
 
-function renderLinks(links) {
+function renderLinks(links: ProjectLink[]): string {
     return links
         .map((l) => `<a href="${escapeHtml(l.href)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`)
         .join('');
 }
 
-function renderProjects() {
+function renderProjects(): void {
     const grid = document.getElementById('projects-grid');
+    if (!grid) return;
+
     grid.innerHTML = PROJECTS.map((p) => `
         <div class="card">
-            <img class="card-thumb" src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}">
+            <img class="card-thumb" src="${escapeHtml(asset(p.image))}" alt="${escapeHtml(p.title)}">
             <div class="card-body">
                 <h3>${escapeHtml(p.title)}</h3>
                 <p>${escapeHtml(p.description)}</p>
@@ -44,16 +54,18 @@ function renderProjects() {
     `).join('');
 }
 
-function renderExperiences() {
+function renderExperiences(): void {
     const grid = document.getElementById('experiences-grid');
+    if (!grid) return;
+
     grid.innerHTML = EXPERIENCES.map((x) => `
         <div class="card xp-card">
-            <img class="card-thumb" src="${escapeHtml(x.image)}" alt="${escapeHtml(x.title)}">
+            ${x.image ? `<span class="card-thumb-frame"><img class="card-thumb" src="${escapeHtml(asset(x.image))}" alt="${escapeHtml(x.title)}"></span>` : ''}
             <div class="card-body">
                 <h3>${escapeHtml(x.title)}</h3>
                 <p class="muted">${escapeHtml(x.subtitle)}</p>
                 <div class="badges">
-                    <span>${escapeHtml(x.duration)}</span>
+                    <span>${escapeHtml(x.contract)}</span>
                     <span>${escapeHtml(x.period)}</span>
                 </div>
                 <p>${escapeHtml(x.description)}</p>
@@ -62,8 +74,10 @@ function renderExperiences() {
     `).join('');
 }
 
-function renderSkills() {
+function renderSkills(): void {
     const grid = document.getElementById('skills-grid');
+    if (!grid) return;
+
     grid.innerHTML = SOFT_SKILLS.map((s) => `
         <div class="card skill-card">
             <div class="card-body">
@@ -74,10 +88,12 @@ function renderSkills() {
     `).join('');
 }
 
-function renderCertificates() {
+function renderCertificates(): void {
     const container = document.getElementById('certificates-logos');
+    if (!container) return;
+
     const imgs = CERTIFICATES
-        .map((src) => `<img src="${escapeHtml(src)}" alt="Certificat" loading="lazy">`)
+        .map((src) => `<img src="${escapeHtml(asset(src))}" alt="Certificat" loading="lazy">`)
         .join('');
     container.innerHTML = `<div class="logo-slide">${imgs}</div><div class="logo-slide">${imgs}</div>`;
 }
@@ -126,7 +142,7 @@ if (projectsCta) {
 let lastTime = performance.now();
 let animationStarted = false;
 
-function animate() {
+function animate(): void {
     requestAnimationFrame(animate);
 
     if (!animationStarted) return;
@@ -156,10 +172,12 @@ window.addEventListener('resize', () => sceneManager.onResize());
 const overlay = document.getElementById('intro-overlay');
 const enterBtn = document.getElementById('enter-btn');
 
-function startExperience() {
-    overlay.style.opacity = '0';
+function startExperience(): void {
+    if (overlay) {
+        overlay.style.opacity = '0';
+    }
     setTimeout(() => {
-        overlay.style.display = 'none';
+        if (overlay) overlay.style.display = 'none';
     }, 1000);
 
     animationStarted = true;

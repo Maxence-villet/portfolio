@@ -1,10 +1,15 @@
 import * as THREE from 'three';
+import type { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { AfterimagePass } from 'three/addons/postprocessing/AfterimagePass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 export class PostProcessing {
-    constructor(composer) {
+    private readonly composer: EffectComposer;
+    private readonly bloomPass: UnrealBloomPass;
+    private readonly afterimagePass: AfterimagePass;
+
+    constructor(composer: EffectComposer) {
         this.composer = composer;
 
         this.bloomPass = new UnrealBloomPass(
@@ -24,7 +29,7 @@ export class PostProcessing {
         this.composer.addPass(new OutputPass());
     }
 
-    update(speedFactor) {
+    update(speedFactor: number): void {
         this.afterimagePass.uniforms['damp'].value = 0.88 + speedFactor * 0.08;
         this.bloomPass.strength = 0.4 + speedFactor * 1.2;
     }

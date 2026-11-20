@@ -1,5 +1,14 @@
+export type DotClickHandler = (index: number) => void;
+
 export class UIManager {
-    constructor(stationNames) {
+    private readonly stationNames: readonly string[];
+    private readonly sections: (HTMLElement | null)[];
+    private readonly dots: NodeListOf<HTMLElement>;
+    private readonly speedLabel: HTMLElement | null;
+
+    currentIndex = 0;
+
+    constructor(stationNames: readonly string[]) {
         this.stationNames = stationNames;
         this.sections = [
             document.getElementById('section-1'),
@@ -10,10 +19,8 @@ export class UIManager {
             document.getElementById('section-6'),
             document.getElementById('section-7')
         ];
-        this.dots = document.querySelectorAll('.progress-dot');
+        this.dots = document.querySelectorAll<HTMLElement>('.progress-dot');
         this.speedLabel = document.getElementById('speed-indicator');
-
-        this.currentIndex = 0;
 
         if (this.sections.every((s) => s !== null) && this.dots.length > 0) {
             this.setActiveStation(0);
@@ -22,7 +29,7 @@ export class UIManager {
         }
     }
 
-    setActiveStation(index) {
+    setActiveStation(index: number): void {
         if (!this.sections[index] || !this.dots[index]) return;
 
         this.sections.forEach((s, i) => {
@@ -37,7 +44,7 @@ export class UIManager {
         }
     }
 
-    updateSpeedLabel(index, velocityZ, autoPilot) {
+    updateSpeedLabel(index: number, velocityZ: number, autoPilot: boolean): void {
         if (!this.speedLabel) return;
         const spd = Math.abs(velocityZ).toFixed(1);
         this.speedLabel.innerHTML = autoPilot
@@ -45,15 +52,16 @@ export class UIManager {
             : `◈ STATION ${index + 1} · VITESSE ${spd}`;
     }
 
-    hideAllSections() {
+    hideAllSections(): void {
         this.sections.forEach((s) => s && s.classList.remove('active'));
     }
 
-    showSection(index) {
-        if (this.sections[index]) this.sections[index].classList.add('active');
+    showSection(index: number): void {
+        const section = this.sections[index];
+        if (section) section.classList.add('active');
     }
 
-    setupEventListeners(onDotClick) {
+    setupEventListeners(onDotClick?: DotClickHandler): void {
         this.dots.forEach((dot, idx) => {
             if (dot) {
                 dot.addEventListener('click', () => {
